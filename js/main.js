@@ -76,6 +76,7 @@ function init() {
 
 function initDraw() {
     var canvasSize = 1024,
+        offset = canvasSize / 2,
         canvasDim = canvasSize.toString() + 'px',
         smdContent = document.getElementById('smd-content'),
         unit = canvasSize / 8,
@@ -101,6 +102,10 @@ function initDraw() {
 
         ctx.strokeStyle = "white";
         ctx.beginPath();
+        if (particleType !== higgsBosonT) {
+            ctx.moveTo((particleType.radius - 1) * unit * Math.cos(start) + offset, (particleType.radius- 1) * unit * Math.sin(start) + offset);
+            ctx.lineTo(particleType.radius * unit * Math.cos(start) + offset, particleType.radius * unit * Math.sin(start) + offset);
+        }
         ctx.arc(canvasSize / 2, canvasSize / 2, particleType.radius * unit, start, end, false);
         ctx.stroke();
     })
