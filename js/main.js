@@ -70,6 +70,7 @@ var particles = [
 function init() {
 
     //alert('loaded');
+    initDraw();
 
 }
 
@@ -93,10 +94,10 @@ function initDraw() {
             start = lastUsed,
             end = (particleType.end - particleType.start) / particleType.quant + start;
         lastUsed = end;
-        console.log(canvas);
+        /*console.log(canvas);
         console.log(particleType);
         console.log(start);
-        console.log(end);
+        console.log(end);*/
 
         ctx.strokeStyle = "white";
         ctx.beginPath();
