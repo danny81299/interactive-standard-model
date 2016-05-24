@@ -69,7 +69,7 @@ var particles = [
 
 function init() {
 
-    //alert('loaded');
+    alert('loaded');
     initDraw();
 
 }
