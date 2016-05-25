@@ -99,6 +99,15 @@ body {
 	background-color: #000;
 	color: #fff;
     overflow: hidden;
+    font-family: 'Open Sans';
+}
+
+h1, h2 {
+    font-weight: 300;
+}
+
+td {
+    padding: 10px;
 }
 
 div {
@@ -117,6 +126,7 @@ div {
 
 #smd-click-listener {
     position: absolute;
+    z-index: 1000;
 }
 
 .canvas-bg, .canvas-layer {
@@ -132,14 +142,17 @@ div {
 
 .particle-focus {
     transform: translate(-4.5454545%, -4.5454545%);
+    z-index: 100;
 }
 
 .particle-standard {
     transform: translate(0,0);
+    z-index: 10;
 }
 
 .particle-blur {
     transform: translate(5.5555556%, 5.5555556%);
+    z-index: 1;
 }
 
 #info {

@@ -12,7 +12,7 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
-        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body onload="init()">
@@ -28,8 +28,30 @@
                         <div id="smd-click-listener"></div>
 					</div>
 				</div>
-                <div id="info">
-                    Hey there!
+                <div id="info" style="width:auto%">
+                    <div id="info-content">
+                        <h1 id="page-title">The Standard Model of Particle Physics</h1>
+                        <h2 id="particle-name">Overview</h2>
+                        <div id="particle-quick-info">
+                            <table>
+                                <tr>
+                                    <td>Symbol</td>
+                                    <td>Type</td>
+                                    <td>Mass</td>
+                                    <td>Spin</td>
+                                    <td>Charge</td>
+                                </tr>
+                                <tr id="data-row">
+                                    <td data-particle-data="symbol"></td>
+                                    <td data-particle-data="type"></td>
+                                    <td data-particle-data="mass"></td>
+                                    <td data-particle-data="spin"></td>
+                                    <td data-particle-data="charge"></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="particle-description"></div>
+                    </div>
                 </div>
 			</div>
 		</div>
