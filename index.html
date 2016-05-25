@@ -12,7 +12,7 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
-        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300|Lora:400italic' rel='stylesheet' type='text/css'>
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body onload="init()">
@@ -31,29 +31,42 @@
                 <div id="info" style="width:auto%">
                     <div id="info-content">
                         <h1 id="page-title">The Standard Model of Particle Physics</h1>
-                        <h2 id="particle-name">Overview</h2>
+                        <h2 id="particle-name">Overview</h2><h3 id="particle-symbol"></h3>
                         <div id="particle-quick-info">
                             <table>
                                 <tr>
-                                    <td>Symbol</td>
                                     <td>Type</td>
+                                    <td>Statistics</td>
                                     <td>Mass</td>
                                     <td>Spin</td>
                                     <td>Charge</td>
                                 </tr>
                                 <tr id="data-row">
-                                    <td data-particle-data="symbol"></td>
                                     <td data-particle-data="type"></td>
+                                    <td data-particle-data="statistics"></td>
                                     <td data-particle-data="mass"></td>
                                     <td data-particle-data="spin"></td>
                                     <td data-particle-data="charge"></td>
                                 </tr>
                             </table>
                         </div>
-                        <div id="particle-description"></div>
+                        <div id="particle-description">
+
+                            Developed during the late 20<sup>th</sup> century, the Standard Model of particle physics describes
+                            the interactions between the electromagnetic, weak, and strong nuclear forces, as well as the
+                            interactions between subatomic particles. Only the most elemental particles and forces compose the Standard
+                            Model. Although a cornerstone of quantum field theory and theoretically self-consistent, the
+                            Standard Model cannot explain all phenomena in the universe. The Standard Model tries to reduce
+                            all physical behaviors and interactions into a smaller set of theories and laws.
+
+                        </div>
                     </div>
                 </div>
 			</div>
+            <div id="footer">
+                &copy; 2016 Dan Zou | <a href="LICENSE.txt">License</a> | Sources: wikipedia.org under
+                CC BY-SA and GFDL, Particle Fever (2013)
+            </div>
 		</div>
 		
 
