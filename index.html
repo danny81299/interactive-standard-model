@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title></title>
+        <title>Interactive Standard Model</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -12,6 +12,7 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body onload="init()">
@@ -19,17 +20,39 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <!-- Add your site or application content here -->
         
 		<div id="main">
 			<div id="content">
-				<div id="standard-model-diagram">
+				<div id="standard-model-diagram" style="width:100%;height:100%;">
 					<div id="smd-content">
-					
-						<canvas id="smd-background" class="canvas-bg" width="512px" height="512px">Your browser does not support canvases</canvas>
-					
+                        <div id="smd-click-listener"></div>
 					</div>
 				</div>
+                <div id="info" style="width:auto%">
+                    <div id="info-content">
+                        <h1 id="page-title">The Standard Model of Particle Physics</h1>
+                        <h2 id="particle-name">Overview</h2>
+                        <div id="particle-quick-info">
+                            <table>
+                                <tr>
+                                    <td>Symbol</td>
+                                    <td>Type</td>
+                                    <td>Mass</td>
+                                    <td>Spin</td>
+                                    <td>Charge</td>
+                                </tr>
+                                <tr id="data-row">
+                                    <td data-particle-data="symbol"></td>
+                                    <td data-particle-data="type"></td>
+                                    <td data-particle-data="mass"></td>
+                                    <td data-particle-data="spin"></td>
+                                    <td data-particle-data="charge"></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="particle-description"></div>
+                    </div>
+                </div>
 			</div>
 		</div>
 		
@@ -38,6 +61,7 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
+        <script src="js/jquery-easing.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
