@@ -164,7 +164,9 @@ function initDraw() {
         }
         ctx.stroke();
 
-
+        ctx.fillStyle = 'white'
+        ctx.font = '1.5em Open Sans';
+        ctx.fillText(particle.name, (particleType.radius - 0.5) * unit * Math.cos((end + start) / 2) + offset, (particleType.radius - 0.5) * unit * Math.sin((end + start) / 2) + offset);
 
     });
 }
