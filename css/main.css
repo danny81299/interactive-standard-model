@@ -98,26 +98,52 @@ textarea {
 body {
 	background-color: #000;
 	color: #fff;
+    overflow: hidden;
 }
 
-.canvas-bg {
+div {
+    height: 100%;
+    width: 100%;
+}
+
+#standard-model-diagram {
+    float: left;
+}
+
+#smd-content {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#smd-click-listener {
+    position: absolute;
+}
+
+.canvas-bg, .canvas-layer {
 	position: absolute;
 }
 
-.canvas-layer {
-	position: absolute;
+.particle-focus, .particle-standard, .particle-blur {
+    -webkit-transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+    -moz-transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
+.particle-focus {
+    transform: translate(-4.5454545%, -4.5454545%);
+}
 
+.particle-standard {
+    transform: translate(0,0);
+}
 
+.particle-blur {
+    transform: translate(5.5555556%, 5.5555556%);
+}
 
-
-
-
-
-
-
-
+#info {
+    float: right;
+    width: auto;
+}
 
 
 /* ==========================================================================

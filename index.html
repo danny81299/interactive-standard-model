@@ -22,11 +22,14 @@
         
 		<div id="main">
 			<div id="content">
-				<div id="standard-model-diagram">
+				<div id="standard-model-diagram" style="width:100%;height:100%;">
 					<div id="smd-content">
-						<canvas id="smd-background" class="canvas-bg" width="512px" height="512px">Your browser does not support canvases</canvas>
+                        <div id="smd-click-listener"></div>
 					</div>
 				</div>
+                <div id="info">
+                    Hey there!
+                </div>
 			</div>
 		</div>
 		
@@ -35,6 +38,7 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
+        <script src="js/jquery-easing.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
