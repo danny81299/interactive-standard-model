@@ -65,8 +65,6 @@ var Type = function (name, type, radius, start, end, quant) {
     this.description = '';
 };
 
-//&plusmdn;
-
 var quark = new Type('quark', 'fermion', 3, 0, Math.PI, 6),
     lepton = new Type('lepton', 'fermion', 3, Math.PI, 2 * Math.PI, 6),
     gaugeBoson = new Type('gauge boson', 'boson', 2, 0, 2 * Math.PI, 4),
@@ -203,26 +201,33 @@ var particles = [
     wBoson, // 15
     higgsBoson]; // 16
 
-var windowHeight = window.innerHeight,
-    windowWidth = window.innerWidth,
+var maxDimension = window.innerHeight > window.innerWidth ? window.innerWidth : window.innerHeight,
     initialInfoContent;
 
-
-function initDraw() {
+function inflateCanvases() {
     'use strict';
 
-    var canvasSize = windowHeight,
-        offset = canvasSize / 2,
+    var canvasSize = maxDimension,
         canvasDim = canvasSize.toString() + 'px',
-        smdContent = document.getElementById('smd-content'),
-        unit = canvasSize / 8 * 1.25,
-        lastUsed = 0;
+        smdContent = document.getElementById('smd-content');
 
     particles.forEach(function (particle, index) {
         smdContent.innerHTML = '<canvas id="smd-' + particles[index].dashName + '" data-camel-name="' +
             particles[index].camelName + '" class="canvas-layer particle-standard" height="' + canvasDim +
             '" width="' + canvasDim + '"></canvas>' + smdContent.innerHTML;
     });
+}
+
+function drawTiles() {
+    var canvasSize = maxDimension,
+        offset = canvasSize / 2,
+        smdContent = document.getElementById('smd-content'),
+        unit = canvasSize / 8 * 1.25,
+        lastUsed = 0;
+
+    if (smdContent.getElementsByClassName('canvas-layer').length === 0) {
+        inflateCanvases();
+    }
 
     particles.forEach(function (particle, index) {
         var canvas = smdContent.getElementsByClassName('canvas-layer')[index],
@@ -231,6 +236,11 @@ function initDraw() {
             start = lastUsed,
             end = (particleType.end - particleType.start) / particleType.quant + start;
         lastUsed = end;
+
+        canvas.setAttribute('width', canvasSize.toString() + 'px');
+        canvas.setAttribute('height', canvasSize.toString() + 'px');
+        console.log(canvasSize);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         switch (particleType) {
             case higgsBosonT:
@@ -268,8 +278,18 @@ function initDraw() {
         } else {
             ctx.fillText(particle.name, (particleType.radius - 0.5) * unit * Math.cos((end + start) / 2) + offset, (particleType.radius - 0.5) * unit * Math.sin((end + start) / 2) + offset);
         }
-
     });
+}
+
+function redrawTiles() {
+    'use strict';
+
+    maxDimension = window.innerHeight > window.innerWidth ? window.innerWidth : window.innerHeight;
+    document.getElementById('standard-model-diagram').style.width = maxDimension + 'px';
+    document.getElementById('standard-model-diagram').style.height = maxDimension + 'px';
+    document.getElementById('info').style.width = (window.innerWidth - maxDimension).toString() + 'px';
+
+    drawTiles();
 }
 
 function focusParticle(particleNum) {
@@ -320,11 +340,11 @@ function normalizeParticles() {
 function getMouseParticle(x, y) {
     'use strict';
 
-    var centeredX = x - windowHeight / 2,
-        centeredY = windowHeight / 2 - y,
+    var centeredX = x - maxDimension / 2,
+        centeredY = maxDimension / 2 - y,
         rawTheta = Math.atan(centeredY / centeredX),
         theta,
-        radius = Math.sqrt(centeredX * centeredX + centeredY * centeredY) / (windowHeight / 8 * 1.25),
+        radius = Math.sqrt(centeredX * centeredX + centeredY * centeredY) / (maxDimension / 8 * 1.25),
         particle = -1;
 
     if (centeredX === 0) {
@@ -364,15 +384,13 @@ function clickSMD(e) { // why the fuck does this work!!!????
 function init() {
     'use strict';
 
-    document.getElementById('standard-model-diagram').style.width = windowHeight + 'px';
-    document.getElementById('standard-model-diagram').style.height = windowHeight + 'px';
-    document.getElementById('info').style.width = (windowWidth - windowHeight).toString() + 'px';
-
-    initDraw();
+    inflateCanvases();
+    redrawTiles();
 
     $('#smd-click-listener').click(function (event) {
         clickSMD(event);
     });
+    $('window').resize(redrawTiles());
 
     initialInfoContent = document.getElementById('info-content').innerHTML;
 }
