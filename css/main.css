@@ -99,7 +99,7 @@ body {
 	background-color: #000;
 	color: #fff;
     overflow: hidden;
-    font-family: 'Open Sans';
+    font-family: 'Open Sans', sans-serif;
 }
 
 h1, h2 {
@@ -120,7 +120,7 @@ div {
     position: fixed;
     bottom: 0;
     font-size: 0.8em;
-    font-family: ' Times New Roman';
+    font-family: 'Times New Roman', serif;
     z-index: 100000;
 }
 

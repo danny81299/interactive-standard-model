@@ -201,13 +201,13 @@ var particles = [
     wBoson, // 15
     higgsBoson]; // 16
 
-var maxDimension = window.innerHeight > window.innerWidth ? window.innerWidth : window.innerHeight,
+var MAXDIMENSION = window.innerHeight > window.innerWidth ? window.innerWidth : window.innerHeight,
     initialInfoContent;
 
 function inflateCanvases() {
     'use strict';
 
-    var canvasSize = maxDimension,
+    var canvasSize = MAXDIMENSION,
         canvasDim = canvasSize.toString() + 'px',
         smdContent = document.getElementById('smd-content');
 
@@ -219,7 +219,9 @@ function inflateCanvases() {
 }
 
 function drawTiles() {
-    var canvasSize = maxDimension,
+    'use strict';
+
+    var canvasSize = MAXDIMENSION,
         offset = canvasSize / 2,
         smdContent = document.getElementById('smd-content'),
         unit = canvasSize / 8 * 1.25,
@@ -284,10 +286,10 @@ function drawTiles() {
 function redrawTiles() {
     'use strict';
 
-    maxDimension = window.innerHeight > window.innerWidth ? window.innerWidth : window.innerHeight;
-    document.getElementById('standard-model-diagram').style.width = maxDimension + 'px';
-    document.getElementById('standard-model-diagram').style.height = maxDimension + 'px';
-    document.getElementById('info').style.width = (window.innerWidth - maxDimension).toString() + 'px';
+    MAXDIMENSION = window.innerHeight > window.innerWidth ? window.innerWidth : window.innerHeight;
+    document.getElementById('standard-model-diagram').style.width = MAXDIMENSION + 'px';
+    document.getElementById('standard-model-diagram').style.height = MAXDIMENSION + 'px';
+    document.getElementById('info').style.width = (window.innerWidth - MAXDIMENSION).toString() + 'px';
 
     drawTiles();
 }
@@ -340,11 +342,11 @@ function normalizeParticles() {
 function getMouseParticle(x, y) {
     'use strict';
 
-    var centeredX = x - maxDimension / 2,
-        centeredY = maxDimension / 2 - y,
+    var centeredX = x - MAXDIMENSION / 2,
+        centeredY = MAXDIMENSION / 2 - y,
         rawTheta = Math.atan(centeredY / centeredX),
         theta,
-        radius = Math.sqrt(centeredX * centeredX + centeredY * centeredY) / (maxDimension / 8 * 1.25),
+        radius = Math.sqrt(centeredX * centeredX + centeredY * centeredY) / (MAXDIMENSION / 8 * 1.25),
         particle = -1;
 
     if (centeredX === 0) {
